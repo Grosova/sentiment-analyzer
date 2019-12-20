@@ -1,0 +1,1 @@
+sentimentAnalyzer > move filenames to const
