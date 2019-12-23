@@ -6,4 +6,4 @@ To start the application run app.py.
 To include training step edit config.py. By default training is turned off, classifier uses model which is saved in "data/model_cache" folder.
 
 
-
+![Web UI](https://github.com/Grosova/sentiment-analyzer/blob/master/screenshot.png)
