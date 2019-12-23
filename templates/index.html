@@ -5,7 +5,6 @@
     <title>My Page</title>
     <link rel="stylesheet" type="text/css" href="static/bootstrap-3.4.1/css/bootstrap.min.css">
     <script src="static/jquery-3.4.1.min.js"></script>
-    
     <script src="static/index.js"></script>
 </head>
 
@@ -24,8 +23,10 @@
                         <form action="send/{{m.id}}" method="POST">
                             <div class=form-group>
                                 <label for="feedback">Your feedback</label>
-                                <span class="badge badge-success hidden js-thank-you-positive">Thatnk you for positive feedback</span>
-                                <span class="badge badge-error hidden js-thank-you-negative">Thatnk you for negative feedback</span>
+                                <span class="label label-success hidden js-thank-you-positive">Thatnk you for positive
+                                    feedback</span>
+                                <span class="label label-danger hidden js-thank-you-negative">Thatnk you for negative
+                                    feedback</span>
                                 <textarea class="form-control js-feedback" rows="3" name="feedback"></textarea>
                                 <input class="hidden js-id" name="id" value="{{m.id}}">
                             </div>
