@@ -5,3 +5,5 @@ Following article was used to build the classifier https://towardsdatascience.co
 To start the application run app.py.
 To include training step edit config.py. By default training is turned off, classifier uses model which is saved in "data/model_cache" folder.
 
+
+
