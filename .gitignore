@@ -1,0 +1,3 @@
+/.sentiment_analysis/Lib/site-packages/*
+/.sentiment_analysis/*
+/__pycache__/*

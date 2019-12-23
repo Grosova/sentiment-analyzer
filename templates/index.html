@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Page</title>
+    <link rel="stylesheet" type="text/css" href="static/bootstrap-3.4.1/css/bootstrap.min.css">
+    <script src="static/jquery-3.4.1.min.js"></script>
+    
+    <script src="static/index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Movies</h1>
+
+        <p>Leave your feadback</p>
+        <div class="row">
+            {%for m in movies%}
+            <div class="card col-md-4 style=" width: 18rem;">
+                <img class="card-img-top" src="{{m.img_url}}" alt="{{m.name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{m.name}}</h5>
+                    <p class="card-text">
+                        <form action="send/{{m.id}}" method="POST">
+                            <div class=form-group>
+                                <label for="feedback">Your feedback</label>
+                                <span class="badge badge-success hidden js-thank-you-positive">Thatnk you for positive feedback</span>
+                                <span class="badge badge-error hidden js-thank-you-negative">Thatnk you for negative feedback</span>
+                                <textarea class="form-control js-feedback" rows="3" name="feedback"></textarea>
+                                <input class="hidden js-id" name="id" value="{{m.id}}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</body>
+
+</html>

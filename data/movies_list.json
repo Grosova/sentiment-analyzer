@@ -1,0 +1,28 @@
+{
+    "movies" : [
+        {
+            "id" : 1,
+            "name" : "Movie 1",
+            "director" : "Director 1",
+            "year" : 2018,
+            "img_url" : "static/images/img1.jpg",
+            "feedback" : "none"
+        },
+        {
+            "id" : 2,
+            "name" : "Movie 2",
+            "director" : "Director 2",
+            "year" : 2017,
+            "img_url" : "static/images/img2.jpg",
+            "feedback" : "none"
+        },
+        {
+            "id" : 3,
+            "name" : "Movie 3",
+            "director" : "Director 3",
+            "year" : 1999,
+            "img_url" : "static/images/img3.jpg",
+            "feedback" : "none"
+        }
+    ]
+}

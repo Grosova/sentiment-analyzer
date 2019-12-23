@@ -7,8 +7,8 @@ import pickle
 
 class SentimentAnalyzer:
 
-    final_model_path = 'model_cache/final_model.sav'
-    vocabulary_path = 'model_cache/vocabulary.pkl'
+    final_model_path = 'data/model_cache/final_model.sav'
+    vocabulary_path = 'data/model_cache/vocabulary.pkl'
 
     def preprocess_reviews(self, reviews):
         REPLACE_NO_SPACE = re.compile("[.;:!\'?,\"()\[\]]")
@@ -33,11 +33,11 @@ class SentimentAnalyzer:
 
         # data preprocessing
         reviews_train = []
-        for line in open('movie_data/full_train.txt', encoding='utf8', mode='r'):
+        for line in open('data/movie_data/full_train.txt', encoding='utf8', mode='r'):
             reviews_train.append(line.strip())
 
         reviews_test = []
-        for line in open('movie_data/full_test.txt', encoding='utf8', mode='r'):
+        for line in open('data/movie_data/full_test.txt', encoding='utf8', mode='r'):
             reviews_test.append(line.strip())
 
         reviews_train_clean = self.preprocess_reviews(reviews_train)
@@ -58,7 +58,7 @@ class SentimentAnalyzer:
         accuracy = 0
         c = 0
         for current_c in [0.01, 0.05, 0.25, 0.5, 1]:
-            lr = LogisticRegression(C=current_c)
+            lr = LogisticRegression(C=current_c, solver='liblinear')
             lr.fit(X_train, y_train)
             current_accuracy = accuracy_score(y_val, lr.predict(X_val))
             if current_accuracy > accuracy:
@@ -69,7 +69,7 @@ class SentimentAnalyzer:
         print(f"The best accuracy is {accuracy}, C = {c}")
 
         # train final model
-        self.final_model = LogisticRegression(C=c)
+        self.final_model = LogisticRegression(C=c,  solver='liblinear')
         self.final_model.fit(X, target)
         print(f"Final accuracy is {accuracy_score(target, self.final_model.predict(X_test))}")
 
