@@ -6,9 +6,10 @@ import re
 import pickle
 
 class SentimentAnalyzer:
-
     final_model_path = 'data/model_cache/final_model.sav'
     vocabulary_path = 'data/model_cache/vocabulary.pkl'
+    data_train_path = 'data/movie_data/full_train.txt'
+    data_test_path = 'data/movie_data/full_test.txt'
 
     def preprocess_reviews(self, reviews):
         REPLACE_NO_SPACE = re.compile("[.;:!\'?,\"()\[\]]")
@@ -18,7 +19,7 @@ class SentimentAnalyzer:
 
         return reviews
     
-    def create_model(self, train_required):       
+    def load_model(self, train_required):       
         if train_required:
             self.train()
         else: 
@@ -33,11 +34,11 @@ class SentimentAnalyzer:
 
         # data preprocessing
         reviews_train = []
-        for line in open('data/movie_data/full_train.txt', encoding='utf8', mode='r'):
+        for line in open(SentimentAnalyzer.data_train_path, encoding='utf8', mode='r'):
             reviews_train.append(line.strip())
 
         reviews_test = []
-        for line in open('data/movie_data/full_test.txt', encoding='utf8', mode='r'):
+        for line in open(SentimentAnalyzer.data_test_path, encoding='utf8', mode='r'):
             reviews_test.append(line.strip())
 
         reviews_train_clean = self.preprocess_reviews(reviews_train)

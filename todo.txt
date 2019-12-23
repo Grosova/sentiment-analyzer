@@ -1,2 +1,0 @@
-sentimentAnalyzer > move filenames to const
-move js css to appropriate places

@@ -5,8 +5,10 @@ from flask import render_template
 from flask import request
 
 app = Flask(__name__)
+app.config.from_pyfile('config.py')
 
 movies_list = []
+sa = SentimentAnalyzer()
 
 @app.route('/')
 def movies():
@@ -17,13 +19,12 @@ def movies():
 
 @app.route('/send/<movie_id>', methods=['POST'])
 def send(movie_id):    
-    feedback = request.form['feedback'] 
-       
-    sa = SentimentAnalyzer()
-    sa.create_model(False)
-    res = sa.predict(feedback)   
+    feedback = request.form['feedback']
+    res = sa.predict(feedback)
     
     return json.dumps({'status':'OK', 'res':str(res[0])})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    train_model = app.config['TRAIN']    
+    sa.load_model(train_model)
+    app.run()    
